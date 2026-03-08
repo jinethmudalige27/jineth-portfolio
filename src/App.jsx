@@ -15,25 +15,25 @@ export default function Portfolio() {
           name: "Structural Mechanics",
           desc: "Study of stress, strain, shear force diagrams and bending moments to understand how structures behave under load.",
           more: "This subject develops the core structural thinking needed in civil engineering. It focuses on how beams and members react under loading, and how engineers use calculations and diagrams to understand internal forces and structural response.",
-          image: "Add structural mechanics image here",
+          image: "/images/Structural Mechanics.png",
         },
         {
           name: "Fluid Mechanics",
           desc: "Behaviour of fluids at rest and in motion including pressure, hydrostatics and Bernoulli principles.",
           more: "This subject introduces how water and other fluids behave in engineering systems. It connects theory with practical applications such as pressure, flow, and fluid movement in pipes, channels, and hydraulic situations.",
-          image: "Add fluid mechanics image here",
+          image: "/images/Fluid Mechanics.png",
         },
         {
           name: "Topographical Engineering",
           desc: "Surveying and land measurement techniques used in civil engineering projects.",
           more: "This subject focuses on how engineers measure land, map terrain, and gather accurate site data. It supports real engineering work by building skills in surveying, levels, coordinates, and site layout.",
-          image: "Add topographical engineering image here",
+          image: "/images/Topographical Engineering.png",
         },
         {
           name: "Digital Engineering Project",
           desc: "Team based engineering project using digital tools and modelling methods.",
           more: "This subject is project based and brings engineering ideas into a digital environment. It involves teamwork, planning, modelling, and presenting solutions using modern engineering workflows.",
-          image: "Add digital engineering project image here",
+          image: "/images/Digital Engineering Project.png",
         },
       ],
     },
@@ -148,7 +148,6 @@ export default function Portfolio() {
       </section>
 
       <main className="mx-auto max-w-7xl px-6 pb-24 space-y-8">
-
         <Section id="about" title="About">
           <p className="max-w-4xl text-base leading-8 text-neutral-300">
             I am Jineth Yashanath Yadeeshwara Mudalige, a civil engineering student currently studying
@@ -196,7 +195,6 @@ export default function Portfolio() {
 
               <div className="mt-8 grid gap-5 md:grid-cols-2">
                 {education[openEdu].items.map((sub, subIndex) => (
-                  // Subject tiles
                   <button
                     key={sub.name}
                     onClick={() => {
@@ -228,10 +226,13 @@ export default function Portfolio() {
                           Read more
                         </button>
                       )}
-                      <button onClick={() => {
-                        setOpenSubject(null);
-                        setShowTopoPage(false);
-                      }} className="text-sm underline">
+                      <button
+                        onClick={() => {
+                          setOpenSubject(null);
+                          setShowTopoPage(false);
+                        }}
+                        className="text-sm underline"
+                      >
                         Close
                       </button>
                     </div>
@@ -243,50 +244,57 @@ export default function Portfolio() {
                         {education[openEdu].items[openSubject].more}
                       </p>
                     </div>
-                    <div className="rounded-[1.5rem] border border-dashed border-neutral-700 bg-neutral-900 p-6 min-h-[220px] flex items-center justify-center text-center text-neutral-500">
-                      {education[openEdu].items[openSubject].image}
+                    <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-900 p-3 min-h-[220px] overflow-hidden">
+                      <img
+                        src={education[openEdu].items[openSubject].image}
+                        alt={education[openEdu].items[openSubject].name}
+                        className="w-full h-full object-cover rounded-[1rem]"
+                      />
                     </div>
                   </div>
                 </div>
               )}
 
-              {openSubject !== null && openEdu === 0 && showTopoPage && education[openEdu].items[openSubject].name === "Topographical Engineering" && (
-                <div className="mt-8 rounded-[1.75rem] border border-neutral-800 bg-neutral-950 p-8">
-                  <button
-                    onClick={() => setShowTopoPage(false)}
-                    className="text-sm underline"
-                  >
-                    ← Back to subject overview
-                  </button>
+              {openSubject !== null &&
+                openEdu === 0 &&
+                showTopoPage &&
+                education[openEdu].items[openSubject].name === "Topographical Engineering" && (
+                  <div className="mt-8 rounded-[1.75rem] border border-neutral-800 bg-neutral-950 p-8">
+                    <button
+                      onClick={() => setShowTopoPage(false)}
+                      className="text-sm underline"
+                    >
+                      ← Back to subject overview
+                    </button>
 
-                  <div className="mt-6">
-                    <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Topographical Engineering</div>
-                    <h3 className="mt-3 text-3xl font-semibold">Detailed Work</h3>
-                    <p className="mt-4 max-w-3xl text-neutral-300 leading-8">
-                      This page is for the detailed work completed in Topographical Engineering. You can add your own site work, surveying tasks, mapping exercises, field activities, drawings, and any project notes here.
-                    </p>
-                  </div>
+                    <div className="mt-6">
+                      <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Topographical Engineering</div>
+                      <h3 className="mt-3 text-3xl font-semibold">Detailed Work</h3>
+                      <p className="mt-4 max-w-3xl text-neutral-300 leading-8">
+                        This page is for the detailed work completed in Topographical Engineering. You can add your own site work, surveying tasks, mapping exercises, field activities, drawings, and any project notes here.
+                      </p>
+                    </div>
 
-                  <div className="mt-10 grid gap-6 lg:grid-cols-2">
-                    <div className="rounded-[1.5rem] border border-dashed border-neutral-700 bg-neutral-900 p-6 min-h-[260px] flex items-center justify-center text-center text-neutral-500">
-                      Add topographical image 1 here
+                    <div className="mt-10 grid gap-6 lg:grid-cols-2">
+                      <div className="rounded-[1.5rem] border border-dashed border-neutral-700 bg-neutral-900 p-6 min-h-[260px] flex items-center justify-center text-center text-neutral-500">
+                        Add topographical image 1 here
+                      </div>
+                      <div className="rounded-[1.5rem] border border-dashed border-neutral-700 bg-neutral-900 p-6 min-h-[260px] flex items-center justify-center text-center text-neutral-500">
+                        Add topographical image 2 here
+                      </div>
+                      <div className="rounded-[1.5rem] border border-dashed border-neutral-700 bg-neutral-900 p-6 min-h-[260px] flex items-center justify-center text-center text-neutral-500 lg:col-span-2">
+                        Add topographical image 3 or drawing here
+                      </div>
                     </div>
-                    <div className="rounded-[1.5rem] border border-dashed border-neutral-700 bg-neutral-900 p-6 min-h-[260px] flex items-center justify-center text-center text-neutral-500">
-                      Add topographical image 2 here
-                    </div>
-                    <div className="rounded-[1.5rem] border border-dashed border-neutral-700 bg-neutral-900 p-6 min-h-[260px] flex items-center justify-center text-center text-neutral-500 lg:col-span-2">
-                      Add topographical image 3 or drawing here
-                    </div>
-                  </div>
 
-                  <div className="mt-10 rounded-[1.5rem] border border-neutral-800 bg-neutral-900 p-6">
-                    <h4 className="text-xl font-semibold">My Work in This Subject</h4>
-                    <p className="mt-4 text-neutral-300 leading-8">
-                      Add your own writing here about what you did in this subject, what practical work you completed, what software or tools you used, and what you learned from the field or class activities.
-                    </p>
+                    <div className="mt-10 rounded-[1.5rem] border border-neutral-800 bg-neutral-900 p-6">
+                      <h4 className="text-xl font-semibold">My Work in This Subject</h4>
+                      <p className="mt-4 text-neutral-300 leading-8">
+                        Add your own writing here about what you did in this subject, what practical work you completed, what software or tools you used, and what you learned from the field or class activities.
+                      </p>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
             </div>
           )}
         </Section>
@@ -334,15 +342,10 @@ export default function Portfolio() {
               <h3 className="mt-4 text-2xl font-semibold">Rowing & Kayaking</h3>
 
               <div className="mt-8 grid gap-4 md:grid-cols-2">
-
                 <img src="/images/AdobeStock_334372094.jpeg" alt="Rowing crew boat" className="rounded-xl object-cover w-full h-48" />
-
                 <img src="/images/AdobeStock_10784653.jpeg" alt="Single rowing scull" className="rounded-xl object-cover w-full h-48" />
-
                 <img src="/images/AdobeStock_747885421.jpeg" alt="Kayaking action" className="rounded-xl object-cover w-full h-48" />
-
                 <img src="/images/AdobeStock_1687167796.jpeg" alt="Kayak paddle close up" className="rounded-xl object-cover w-full h-48" />
-
               </div>
 
               <p className="mt-6 text-sm text-neutral-400">
@@ -383,7 +386,6 @@ export default function Portfolio() {
             <p className="mt-6 text-base leading-8 text-neutral-300">jinethmudalige27@gmail.com</p>
           </div>
         </Section>
-
       </main>
     </div>
   );
