@@ -244,12 +244,16 @@ export default function Portfolio() {
                         {education[openEdu].items[openSubject].more}
                       </p>
                     </div>
-                    <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-900 p-3 min-h-[220px] overflow-hidden">
+                    <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-900 p-3">
                       <img
-                        src={education[openEdu].items[openSubject].image}
-                        alt={education[openEdu].items[openSubject].name}
-                        className="w-full h-full object-cover rounded-[1rem]"
+                       key={education[openEdu].items[openSubject].image}
+                       src={education[openEdu].items[openSubject].image}
+                       alt={education[openEdu].items[openSubject].name}
+                       className="block w-full max-w-full h-[320px] object-cover rounded-[1rem]"
                       />
+                      <p className="mt-3 text-xs text-neutral-500 break-all">
+                      {education[openEdu].items[openSubject].image}
+                      </p>
                     </div>
                   </div>
                 </div>
