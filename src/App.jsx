@@ -246,13 +246,13 @@ export default function Portfolio() {
                     </div>
                     <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-900 p-3">
                       <img
-                       key={education[openEdu].items[openSubject].image}
-                       src={education[openEdu].items[openSubject].image}
-                       alt={education[openEdu].items[openSubject].name}
-                       className="block w-full max-w-full h-[320px] object-cover rounded-[1rem]"
+                        key={education[openEdu].items[openSubject].image}
+                        src={education[openEdu].items[openSubject].image}
+                        alt={education[openEdu].items[openSubject].name}
+                        className="block w-full max-w-full h-[320px] object-cover rounded-[1rem]"
                       />
                       <p className="mt-3 text-xs text-neutral-500 break-all">
-                      {education[openEdu].items[openSubject].image}
+                        {education[openEdu].items[openSubject].image}
                       </p>
                     </div>
                   </div>
@@ -280,12 +280,47 @@ export default function Portfolio() {
                     </div>
 
                     <div className="mt-10 grid gap-6 lg:grid-cols-2">
-                      <div className="rounded-[1.5rem] border border-dashed border-neutral-700 bg-neutral-900 p-6 min-h-[260px] flex items-center justify-center text-center text-neutral-500">
-                        Add topographical image 1 here
+                      <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-900 p-4">
+                        <img
+                          src="/images/topographical-fieldwork.jpg"
+                          alt="Levelling survey fieldwork"
+                          className="w-full h-[320px] object-cover rounded-xl"
+                        />
+                        <p className="mt-3 text-xs text-neutral-500">
+                          Practical levelling work completed during Topographical Engineering class.
+                        </p>
+
+                        <p className="mt-5 text-neutral-300 leading-8 text-sm">
+                          During the practical sessions for Topographical Engineering, we carried out
+                          levelling exercises using an automatic level and staff. In week 1 we
+                          performed the two peg test to check the accuracy of the instrument. On our
+                          first attempt, the accuracy was not up to the required standard, so we
+                          repeated the test. We then completed it a second and third time, and our
+                          accuracy improved clearly with each attempt.
+                        </p>
+
+                        <p className="mt-4 text-neutral-300 leading-8 text-sm">
+                          In week 2, we again worked on the two peg test and the improvement in
+                          accuracy was visible. We also completed a project where we had to measure
+                          the elevation difference from point A to point B, and then measure it again
+                          from point B back to point A in order to calculate the error. After
+                          subtracting the sum of all BS readings from the sum of all FS readings, we
+                          obtained 0.015, which was within the required standard of less than 0.020.
+                        </p>
+
+                        <p className="mt-4 text-neutral-300 leading-8 text-sm">
+                          I did make some errors during the process, but luckily we double checked
+                          each reading before writing it down. Some of the mistakes included reading
+                          from the wrong crosshair and counting up the staff incorrectly. Even so,
+                          this practical work helped me understand how important precision,
+                          observation, and checking measurements are in surveying.
+                        </p>
                       </div>
+
                       <div className="rounded-[1.5rem] border border-dashed border-neutral-700 bg-neutral-900 p-6 min-h-[260px] flex items-center justify-center text-center text-neutral-500">
                         Add topographical image 2 here
                       </div>
+
                       <div className="rounded-[1.5rem] border border-dashed border-neutral-700 bg-neutral-900 p-6 min-h-[260px] flex items-center justify-center text-center text-neutral-500 lg:col-span-2">
                         Add topographical image 3 or drawing here
                       </div>
