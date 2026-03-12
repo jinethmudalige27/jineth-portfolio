@@ -251,9 +251,6 @@ export default function Portfolio() {
                         alt={education[openEdu].items[openSubject].name}
                         className="block w-full max-w-full h-[320px] object-cover rounded-[1rem]"
                       />
-                      <p className="mt-3 text-xs text-neutral-500 break-all">
-                        {education[openEdu].items[openSubject].image}
-                      </p>
                     </div>
                   </div>
                 </div>
