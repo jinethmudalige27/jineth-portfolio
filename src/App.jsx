@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import structuralMechanicsImg from "./assets/Structural Mechanics.png";
 import fluidMechanicsImg from "./assets/Fluid Mechanics.png";
@@ -16,6 +16,19 @@ export default function Portfolio() {
   const [openEdu, setOpenEdu] = useState(null);
   const [openSubject, setOpenSubject] = useState(null);
   const [showTopoPage, setShowTopoPage] = useState(false);
+
+  const subjectDetailRef = useRef(null);
+
+  useEffect(() => {
+    if (openSubject !== null && subjectDetailRef.current) {
+      setTimeout(() => {
+        subjectDetailRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 100);
+    }
+  }, [openSubject, showTopoPage]);
 
   const education = [
     {
@@ -54,14 +67,46 @@ export default function Portfolio() {
       place: "Swinburne University of Technology",
       detail: "Completed before entering the bachelor’s program",
       items: [
-        { name: "Methods / Specialist Mathematics Stream", desc: "Advanced mathematics used for engineering calculations." },
-        { name: "Fundamentals of Programming", desc: "Programming fundamentals for solving engineering problems." },
-        { name: "Energy and Motion", desc: "Engineering physics covering forces, motion and energy systems." },
-        { name: "Sustainable and Innovative Design", desc: "Engineering design projects using tools such as SolidWorks." },
-        { name: "Calculus and Applications", desc: "Mathematics for modelling engineering systems." },
-        { name: "Mechanics of Structures", desc: "Introduction to structural behaviour and analysis." },
-        { name: "Materials and Processes", desc: "Study of engineering materials and manufacturing processes." },
-        { name: "Linear Algebra", desc: "Mathematical systems widely used in engineering analysis." },
+        {
+          name: "Methods / Specialist Mathematics Stream",
+          desc: "Advanced mathematics used for engineering calculations.",
+          more: "This subject strengthened my mathematical foundation for engineering by developing skills in algebra, trigonometry, calculus, and advanced problem solving used in technical calculations.",
+        },
+        {
+          name: "Fundamentals of Programming",
+          desc: "Programming fundamentals for solving engineering problems.",
+          more: "This subject introduced basic programming concepts and logical thinking for solving engineering related problems. It helped build confidence in writing structured code and understanding computational methods.",
+        },
+        {
+          name: "Energy and Motion",
+          desc: "Engineering physics covering forces, motion and energy systems.",
+          more: "This subject focused on the principles of mechanics, motion, force, and energy. It developed an understanding of how physical laws apply to engineering systems and practical problem solving.",
+        },
+        {
+          name: "Sustainable and Innovative Design",
+          desc: "Engineering design projects using tools such as SolidWorks.",
+          more: "This subject explored engineering design processes with a focus on creativity, sustainability, and innovation. It also involved practical design development and modelling using engineering tools.",
+        },
+        {
+          name: "Calculus and Applications",
+          desc: "Mathematics for modelling engineering systems.",
+          more: "This subject built core calculus skills used in engineering analysis, including differentiation, integration, and mathematical modelling of changing systems.",
+        },
+        {
+          name: "Mechanics of Structures",
+          desc: "Introduction to structural behaviour and analysis.",
+          more: "This subject introduced the fundamentals of structural behaviour, including forces, reactions, and how members respond under loading. It provided an early base for structural engineering studies.",
+        },
+        {
+          name: "Materials and Processes",
+          desc: "Study of engineering materials and manufacturing processes.",
+          more: "This subject covered different engineering materials, their properties, and the processes used in manufacturing and construction. It helped build understanding of material selection in design.",
+        },
+        {
+          name: "Linear Algebra",
+          desc: "Mathematical systems widely used in engineering analysis.",
+          more: "This subject developed understanding of vectors, matrices, systems of equations, and other mathematical tools that are widely applied in engineering calculations and modelling.",
+        },
       ],
     },
     {
@@ -69,19 +114,53 @@ export default function Portfolio() {
       place: "Swinburne University of Technology",
       detail: "Completed before the diploma",
       items: [
-        { name: "Academic and Communication Skills", desc: "Academic writing and communication preparation for university." },
-        { name: "General Mathematics", desc: "Mathematical preparation for engineering studies." },
-        { name: "Foundation Mathematics", desc: "Algebra and calculus fundamentals." },
-        { name: "Design Fundamentals", desc: "Introduction to design thinking." },
-        { name: "Innovation and Change", desc: "Understanding innovation and technology." },
-        { name: "Information Technology", desc: "Digital computing fundamentals." },
+        {
+          name: "Academic and Communication Skills",
+          desc: "Academic writing and communication preparation for university.",
+          more: "This subject developed academic writing, critical thinking, and communication skills needed for university study. It helped prepare me for report writing, presentations, and formal academic work.",
+        },
+        {
+          name: "General Mathematics",
+          desc: "Mathematical preparation for engineering studies.",
+          more: "This subject strengthened general mathematical understanding and prepared me for more advanced engineering mathematics through problem solving and applied practice.",
+        },
+        {
+          name: "Foundation Mathematics",
+          desc: "Algebra and calculus fundamentals.",
+          more: "This subject introduced the key mathematical foundations required for engineering, including algebraic methods, functions, and early calculus concepts.",
+        },
+        {
+          name: "Design Fundamentals",
+          desc: "Introduction to design thinking.",
+          more: "This subject introduced design principles and creative problem solving. It helped build early understanding of how ideas are developed, tested, and improved in technical fields.",
+        },
+        {
+          name: "Innovation and Change",
+          desc: "Understanding innovation and technology.",
+          more: "This subject explored how innovation affects industries, technology, and society. It encouraged analytical thinking about change, development, and future focused solutions.",
+        },
+        {
+          name: "Information Technology",
+          desc: "Digital computing fundamentals.",
+          more: "This subject built digital literacy and introduced computing concepts that support academic and technical work, including software use, file management, and information handling.",
+        },
       ],
     },
   ];
 
   const skills = {
-    engineering: ["SolidWorks", "Engineering Design", "Engineering Mathematics", "Structural Engineering Fundamentals"],
-    professional: ["Leadership", "Team Management", "Problem Solving", "Project Coordination"],
+    engineering: [
+      "SolidWorks",
+      "Engineering Design",
+      "Engineering Mathematics",
+      "Structural Engineering Fundamentals",
+    ],
+    professional: [
+      "Leadership",
+      "Team Management",
+      "Problem Solving",
+      "Project Coordination",
+    ],
   };
 
   const tiles = [
@@ -122,7 +201,9 @@ export default function Portfolio() {
             <div className="mb-6 inline-block rounded-full border border-neutral-300 px-4 py-1 text-xs uppercase tracking-[0.3em] text-neutral-400">
               Future Structural Engineer
             </div>
-            <h1 className="max-w-4xl text-6xl font-semibold leading-tight md:text-8xl">Jineth Y. Y. Mudalige</h1>
+            <h1 className="max-w-4xl text-6xl font-semibold leading-tight md:text-8xl">
+              Jineth Y. Y. Mudalige
+            </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
               Civil engineering student at Swinburne University of Technology, currently in Year 2,
               Semester 1. My focus is on the structural side of civil engineering, backed by a strong
@@ -180,6 +261,7 @@ export default function Portfolio() {
                 onClick={() => {
                   setOpenEdu(index);
                   setOpenSubject(null);
+                  setShowTopoPage(false);
                 }}
                 className="rounded-[2rem] border border-neutral-800 p-7 shadow-sm text-left hover:border-neutral-600"
               >
@@ -198,11 +280,13 @@ export default function Portfolio() {
                 onClick={() => {
                   setOpenEdu(null);
                   setOpenSubject(null);
+                  setShowTopoPage(false);
                 }}
                 className="text-sm mb-6 underline"
               >
                 ← Back
               </button>
+
               <h2 className="text-3xl font-semibold">{education[openEdu].title}</h2>
 
               <div className="mt-8 grid gap-5 md:grid-cols-2">
@@ -222,13 +306,19 @@ export default function Portfolio() {
                 ))}
               </div>
 
-              {openSubject !== null && openEdu === 0 && !showTopoPage && (
-                <div className="mt-8 rounded-[1.75rem] border border-neutral-800 bg-neutral-950 p-8">
+              {openSubject !== null && !showTopoPage && (
+                <div
+                  ref={subjectDetailRef}
+                  className="mt-8 rounded-[1.75rem] border border-neutral-800 bg-neutral-950 p-8"
+                >
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Subject Detail</div>
-                      <h3 className="mt-3 text-2xl font-semibold">{education[openEdu].items[openSubject].name}</h3>
+                      <h3 className="mt-3 text-2xl font-semibold">
+                        {education[openEdu].items[openSubject].name}
+                      </h3>
                     </div>
+
                     <div className="flex items-center gap-4">
                       {education[openEdu].items[openSubject].name === "Topographical Engineering" && (
                         <button
@@ -238,6 +328,7 @@ export default function Portfolio() {
                           Read more
                         </button>
                       )}
+
                       <button
                         onClick={() => {
                           setOpenSubject(null);
@@ -253,26 +344,30 @@ export default function Portfolio() {
                   <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
                     <div>
                       <p className="text-neutral-300 leading-8">
-                        {education[openEdu].items[openSubject].more}
+                        {education[openEdu].items[openSubject].more || "No additional details provided."}
                       </p>
                     </div>
-                    <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-900 p-3">
-                      <img
-                        key={education[openEdu].items[openSubject].image}
-                        src={education[openEdu].items[openSubject].image}
-                        alt={education[openEdu].items[openSubject].name}
-                        className="block w-full max-w-full h-[320px] object-cover rounded-[1rem]"
-                      />
-                    </div>
+
+                    {education[openEdu].items[openSubject].image && (
+                      <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-900 p-3">
+                        <img
+                          src={education[openEdu].items[openSubject].image}
+                          alt={education[openEdu].items[openSubject].name}
+                          className="block w-full max-w-full h-[320px] object-cover rounded-[1rem]"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               )}
 
               {openSubject !== null &&
-                openEdu === 0 &&
                 showTopoPage &&
                 education[openEdu].items[openSubject].name === "Topographical Engineering" && (
-                  <div className="mt-8 rounded-[1.75rem] border border-neutral-800 bg-neutral-950 p-8">
+                  <div
+                    ref={subjectDetailRef}
+                    className="mt-8 rounded-[1.75rem] border border-neutral-800 bg-neutral-950 p-8"
+                  >
                     <button
                       onClick={() => setShowTopoPage(false)}
                       className="text-sm underline"
@@ -281,7 +376,9 @@ export default function Portfolio() {
                     </button>
 
                     <div className="mt-6">
-                      <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Topographical Engineering</div>
+                      <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                        Topographical Engineering
+                      </div>
                       <h3 className="mt-3 text-3xl font-semibold">Detailed Work</h3>
                       <p className="mt-4 max-w-3xl text-neutral-300 leading-8">
                         This page is for the detailed work completed in Topographical Engineering.
@@ -434,7 +531,10 @@ export default function Portfolio() {
 
 function Section({ id, title, children }) {
   return (
-    <section id={id} className="scroll-mt-24 rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 md:p-10 transition-opacity duration-500">
+    <section
+      id={id}
+      className="scroll-mt-24 rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 md:p-10 transition-opacity duration-500"
+    >
       <div className="text-xs uppercase tracking-[0.35em] text-neutral-500">{title}</div>
       <div className="mt-6">{children}</div>
     </section>
