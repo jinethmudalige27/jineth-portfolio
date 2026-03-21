@@ -1,5 +1,17 @@
 import { useState } from "react";
 
+import structuralMechanicsImg from "./assets/Structural Mechanics.png";
+import fluidMechanicsImg from "./assets/Fluid Mechanics.png";
+import topographicalEngineeringImg from "./assets/Topographical Engineering.png";
+import digitalEngineeringProjectImg from "./assets/Digital Engineering Project.png";
+
+import rowingCrewImg from "./assets/AdobeStock_334372094.jpeg";
+import rowingScullImg from "./assets/AdobeStock_10784653.jpeg";
+import kayakingActionImg from "./assets/AdobeStock_747885421.jpeg";
+import kayakPaddleImg from "./assets/AdobeStock_1687167796.jpeg";
+
+import topographicalFieldworkImg from "./assets/topographical-fieldwork.jpg";
+
 export default function Portfolio() {
   const [openEdu, setOpenEdu] = useState(null);
   const [openSubject, setOpenSubject] = useState(null);
@@ -15,25 +27,25 @@ export default function Portfolio() {
           name: "Structural Mechanics",
           desc: "Study of stress, strain, shear force diagrams and bending moments to understand how structures behave under load.",
           more: "This subject develops the core structural thinking needed in civil engineering. It focuses on how beams and members react under loading, and how engineers use calculations and diagrams to understand internal forces and structural response.",
-          image: "/images/Structural Mechanics.png",
+          image: structuralMechanicsImg,
         },
         {
           name: "Fluid Mechanics",
           desc: "Behaviour of fluids at rest and in motion including pressure, hydrostatics and Bernoulli principles.",
           more: "This subject introduces how water and other fluids behave in engineering systems. It connects theory with practical applications such as pressure, flow, and fluid movement in pipes, channels, and hydraulic situations.",
-          image: "/images/Fluid Mechanics.png",
+          image: fluidMechanicsImg,
         },
         {
           name: "Topographical Engineering",
           desc: "Surveying and land measurement techniques used in civil engineering projects.",
           more: "This subject focuses on how engineers measure land, map terrain, and gather accurate site data. It supports real engineering work by building skills in surveying, levels, coordinates, and site layout.",
-          image: "/images/Topographical Engineering.png",
+          image: topographicalEngineeringImg,
         },
         {
           name: "Digital Engineering Project",
           desc: "Team based engineering project using digital tools and modelling methods.",
           more: "This subject is project based and brings engineering ideas into a digital environment. It involves teamwork, planning, modelling, and presenting solutions using modern engineering workflows.",
-          image: "/images/Digital Engineering Project.png",
+          image: digitalEngineeringProjectImg,
         },
       ],
     },
@@ -272,14 +284,14 @@ export default function Portfolio() {
                       <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Topographical Engineering</div>
                       <h3 className="mt-3 text-3xl font-semibold">Detailed Work</h3>
                       <p className="mt-4 max-w-3xl text-neutral-300 leading-8">
-                        This page is for the detailed work completed in Topographical Engineering. You can add your own site work, surveying tasks, mapping exercises, field activities, drawings, and any project notes here.
+                        This page is for the detailed work completed in Topographical Engineering.
                       </p>
                     </div>
 
                     <div className="mt-10 grid gap-6 lg:grid-cols-2">
                       <div className="rounded-[1.5rem] border border-neutral-800 bg-neutral-900 p-4">
                         <img
-                          src="/images/topographical-fieldwork.jpg"
+                          src={topographicalFieldworkImg}
                           alt="Levelling survey fieldwork"
                           className="w-full h-[320px] object-cover rounded-xl"
                         />
@@ -321,13 +333,6 @@ export default function Portfolio() {
                       <div className="rounded-[1.5rem] border border-dashed border-neutral-700 bg-neutral-900 p-6 min-h-[260px] flex items-center justify-center text-center text-neutral-500 lg:col-span-2">
                         Add topographical image 3 or drawing here
                       </div>
-                    </div>
-
-                    <div className="mt-10 rounded-[1.5rem] border border-neutral-800 bg-neutral-900 p-6">
-                      <h4 className="text-xl font-semibold">My Work in This Subject</h4>
-                      <p className="mt-4 text-neutral-300 leading-8">
-                        Add your own writing here about what you did in this subject, what practical work you completed, what software or tools you used, and what you learned from the field or class activities.
-                      </p>
                     </div>
                   </div>
                 )}
@@ -378,10 +383,10 @@ export default function Portfolio() {
               <h3 className="mt-4 text-2xl font-semibold">Rowing & Kayaking</h3>
 
               <div className="mt-8 grid gap-4 md:grid-cols-2">
-                <img src="/images/AdobeStock_334372094.jpeg" alt="Rowing crew boat" className="rounded-xl object-cover w-full h-48" />
-                <img src="/images/AdobeStock_10784653.jpeg" alt="Single rowing scull" className="rounded-xl object-cover w-full h-48" />
-                <img src="/images/AdobeStock_747885421.jpeg" alt="Kayaking action" className="rounded-xl object-cover w-full h-48" />
-                <img src="/images/AdobeStock_1687167796.jpeg" alt="Kayak paddle close up" className="rounded-xl object-cover w-full h-48" />
+                <img src={rowingCrewImg} alt="Rowing crew boat" className="rounded-xl object-cover w-full h-48" />
+                <img src={rowingScullImg} alt="Single rowing scull" className="rounded-xl object-cover w-full h-48" />
+                <img src={kayakingActionImg} alt="Kayaking action" className="rounded-xl object-cover w-full h-48" />
+                <img src={kayakPaddleImg} alt="Kayak paddle close up" className="rounded-xl object-cover w-full h-48" />
               </div>
 
               <p className="mt-6 text-sm text-neutral-400">
