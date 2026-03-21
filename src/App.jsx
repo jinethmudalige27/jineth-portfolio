@@ -22,7 +22,7 @@ export default function Portfolio() {
   useEffect(() => {
     if (openSubject !== null && subjectDetailRef.current) {
       setTimeout(() => {
-        const yOffset = -100;
+        const yOffset = -110;
         const element = subjectDetailRef.current;
         const y =
           element.getBoundingClientRect().top +
@@ -36,6 +36,30 @@ export default function Portfolio() {
       }, 150);
     }
   }, [openSubject, showTopoPage]);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          } else {
+            entry.target.classList.remove("show");
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [openEdu, openSubject, showTopoPage]);
 
   const education = [
     {
@@ -186,7 +210,7 @@ export default function Portfolio() {
 
   return (
     <div className="min-h-screen bg-neutral-950 text-neutral-100">
-      <header className="border-b border-neutral-800">
+      <header className="border-b border-neutral-800 reveal">
         <div className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
           <div>
             <div className="text-xs uppercase tracking-[0.35em] text-neutral-500">
@@ -208,7 +232,7 @@ export default function Portfolio() {
         </div>
       </header>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+      <section className="mx-auto max-w-7xl px-6 py-20 md:py-28 reveal">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-end">
           <div>
             <div className="mb-6 inline-block rounded-full border border-neutral-300 px-4 py-1 text-xs uppercase tracking-[0.3em] text-neutral-400">
@@ -225,7 +249,7 @@ export default function Portfolio() {
               in rowing and kayaking at national level competition.
             </p>
           </div>
-          <div className="rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 shadow-sm">
+          <div className="rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 shadow-sm reveal">
             <div className="text-sm uppercase tracking-[0.25em] text-neutral-500">
               Current Focus
             </div>
@@ -239,13 +263,13 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-16">
+      <section className="mx-auto max-w-7xl px-6 pb-16 reveal">
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {tiles.map((tile) => (
             <button
               key={tile.id}
               onClick={() => scrollToSection(tile.id)}
-              className="group rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-neutral-600 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+              className="reveal group rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-neutral-600 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
             >
               <div className="text-xs uppercase tracking-[0.35em] text-neutral-500">
                 Section
@@ -287,7 +311,7 @@ export default function Portfolio() {
                   setOpenSubject(null);
                   setShowTopoPage(false);
                 }}
-                className="rounded-[2rem] border border-neutral-800 p-7 shadow-sm text-left hover:border-neutral-600"
+                className="reveal rounded-[2rem] border border-neutral-800 p-7 shadow-sm text-left hover:border-neutral-600"
               >
                 <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                   Qualification
@@ -305,7 +329,7 @@ export default function Portfolio() {
           </div>
 
           {openEdu !== null && (
-            <div className="mt-10 rounded-[2rem] border border-neutral-800 p-8">
+            <div className="mt-10 rounded-[2rem] border border-neutral-800 p-8 reveal">
               <button
                 onClick={() => {
                   setOpenEdu(null);
@@ -329,7 +353,7 @@ export default function Portfolio() {
                       setOpenSubject(subIndex);
                       setShowTopoPage(false);
                     }}
-                    className="rounded-[1.5rem] border border-neutral-800 bg-neutral-950 p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-neutral-600 hover:shadow-[0_0_18px_rgba(255,255,255,0.12)]"
+                    className="reveal rounded-[1.5rem] border border-neutral-800 bg-neutral-950 p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-neutral-600 hover:shadow-[0_0_18px_rgba(255,255,255,0.12)]"
                   >
                     <h3 className="text-xl font-semibold">{sub.name}</h3>
                     <p className="text-neutral-300 mt-3 leading-7">
@@ -491,7 +515,7 @@ export default function Portfolio() {
 
         <Section id="engineering" title="Engineering">
           <div className="grid gap-6 lg:grid-cols-2">
-            <article className="rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
+            <article className="reveal rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
               <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                 Current Studies
               </div>
@@ -504,7 +528,7 @@ export default function Portfolio() {
               </ul>
             </article>
 
-            <article className="rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
+            <article className="reveal rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
               <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                 Design Interest
               </div>
@@ -523,7 +547,7 @@ export default function Portfolio() {
 
         <Section id="leadership" title="Leadership">
           <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <article className="rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 shadow-sm">
+            <article className="reveal rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 shadow-sm">
               <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                 Sport & Responsibility
               </div>
@@ -538,7 +562,7 @@ export default function Portfolio() {
               </div>
             </article>
 
-            <article className="rounded-[2rem] border border-neutral-800 bg-neutral-950 p-8 shadow-sm">
+            <article className="reveal rounded-[2rem] border border-neutral-800 bg-neutral-950 p-8 shadow-sm">
               <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                 Gallery
               </div>
@@ -550,22 +574,22 @@ export default function Portfolio() {
                 <img
                   src={rowingCrewImg}
                   alt="Rowing crew boat"
-                  className="rounded-xl object-cover w-full h-48"
+                  className="reveal rounded-xl object-cover w-full h-48"
                 />
                 <img
                   src={rowingScullImg}
                   alt="Single rowing scull"
-                  className="rounded-xl object-cover w-full h-48"
+                  className="reveal rounded-xl object-cover w-full h-48"
                 />
                 <img
                   src={kayakingActionImg}
                   alt="Kayaking action"
-                  className="rounded-xl object-cover w-full h-48"
+                  className="reveal rounded-xl object-cover w-full h-48"
                 />
                 <img
                   src={kayakPaddleImg}
                   alt="Kayak paddle close up"
-                  className="rounded-xl object-cover w-full h-48"
+                  className="reveal rounded-xl object-cover w-full h-48"
                 />
               </div>
 
@@ -579,7 +603,7 @@ export default function Portfolio() {
 
         <Section id="skills" title="Skills">
           <div className="grid gap-6 md:grid-cols-2">
-            <article className="rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
+            <article className="reveal rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
               <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                 Technical
               </div>
@@ -593,7 +617,7 @@ export default function Portfolio() {
               </ul>
             </article>
 
-            <article className="rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
+            <article className="reveal rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
               <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                 Professional
               </div>
@@ -608,7 +632,7 @@ export default function Portfolio() {
         </Section>
 
         <Section id="contact" title="Contact">
-          <div className="rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
+          <div className="reveal rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
             <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
               Contact
             </div>
@@ -629,7 +653,7 @@ function Section({ id, title, children }) {
   return (
     <section
       id={id}
-      className="scroll-mt-24 rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 md:p-10 transition-opacity duration-500"
+      className="reveal scroll-mt-24 rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 md:p-10 transition-opacity duration-500"
     >
       <div className="text-xs uppercase tracking-[0.35em] text-neutral-500">
         {title}
