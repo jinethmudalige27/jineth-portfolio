@@ -22,11 +22,18 @@ export default function Portfolio() {
   useEffect(() => {
     if (openSubject !== null && subjectDetailRef.current) {
       setTimeout(() => {
-        subjectDetailRef.current?.scrollIntoView({
+        const yOffset = -100;
+        const element = subjectDetailRef.current;
+        const y =
+          element.getBoundingClientRect().top +
+          window.pageYOffset +
+          yOffset;
+
+        window.scrollTo({
+          top: y,
           behavior: "smooth",
-          block: "start",
         });
-      }, 100);
+      }, 150);
     }
   }, [openSubject, showTopoPage]);
 
@@ -182,12 +189,18 @@ export default function Portfolio() {
       <header className="border-b border-neutral-800">
         <div className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
           <div>
-            <div className="text-xs uppercase tracking-[0.35em] text-neutral-500">Portfolio</div>
+            <div className="text-xs uppercase tracking-[0.35em] text-neutral-500">
+              Portfolio
+            </div>
             <div className="text-lg font-semibold">Jineth Y. Y. Mudalige</div>
           </div>
           <nav className="hidden md:flex gap-6 text-sm text-neutral-400">
             {tiles.map((tile) => (
-              <button key={tile.id} onClick={() => scrollToSection(tile.id)} className="hover:text-white">
+              <button
+                key={tile.id}
+                onClick={() => scrollToSection(tile.id)}
+                className="hover:text-white"
+              >
                 {tile.title}
               </button>
             ))}
@@ -205,14 +218,17 @@ export default function Portfolio() {
               Jineth Y. Y. Mudalige
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-300">
-              Civil engineering student at Swinburne University of Technology, currently in Year 2,
-              Semester 1. My focus is on the structural side of civil engineering, backed by a strong
-              pathway through foundation and diploma studies, along with leadership experience in
-              rowing and kayaking at national level competition.
+              Civil engineering student at Swinburne University of Technology,
+              currently in Year 2, Semester 1. My focus is on the structural
+              side of civil engineering, backed by a strong pathway through
+              foundation and diploma studies, along with leadership experience
+              in rowing and kayaking at national level competition.
             </p>
           </div>
           <div className="rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 shadow-sm">
-            <div className="text-sm uppercase tracking-[0.25em] text-neutral-500">Current Focus</div>
+            <div className="text-sm uppercase tracking-[0.25em] text-neutral-500">
+              Current Focus
+            </div>
             <div className="mt-4 space-y-3 text-base text-neutral-200">
               <p>Bachelor of Civil Engineering (Honours)</p>
               <p>Swinburne University of Technology</p>
@@ -231,10 +247,16 @@ export default function Portfolio() {
               onClick={() => scrollToSection(tile.id)}
               className="group rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-neutral-600 hover:shadow-[0_0_25px_rgba(255,255,255,0.15)]"
             >
-              <div className="text-xs uppercase tracking-[0.35em] text-neutral-500">Section</div>
+              <div className="text-xs uppercase tracking-[0.35em] text-neutral-500">
+                Section
+              </div>
               <div className="mt-5 text-2xl font-semibold">{tile.title}</div>
-              <p className="mt-3 text-sm leading-7 text-neutral-400">{tile.subtitle}</p>
-              <div className="mt-8 text-sm font-medium text-neutral-100">Open section →</div>
+              <p className="mt-3 text-sm leading-7 text-neutral-400">
+                {tile.subtitle}
+              </p>
+              <div className="mt-8 text-sm font-medium text-neutral-100">
+                Open section →
+              </div>
             </button>
           ))}
         </div>
@@ -243,13 +265,15 @@ export default function Portfolio() {
       <main className="mx-auto max-w-7xl px-6 pb-24 space-y-8">
         <Section id="about" title="About">
           <p className="max-w-4xl text-base leading-8 text-neutral-300">
-            I am Jineth Yashanath Yadeeshwara Mudalige, a civil engineering student currently studying
-            the Bachelor of Civil Engineering (Honours) at Swinburne University of Technology in
-            Australia. I am originally from Sri Lanka and moved to Australia for my studies. Before
-            starting my bachelor’s degree, I completed the Swinburne Foundation Program and then a
-            Diploma of Engineering, which helped me build a strong base in mathematics, engineering,
-            and design. I am especially interested in structural engineering and want to build a
-            career on the structural side of civil engineering.
+            I am Jineth Yashanath Yadeeshwara Mudalige, a civil engineering
+            student currently studying the Bachelor of Civil Engineering
+            (Honours) at Swinburne University of Technology in Australia. I am
+            originally from Sri Lanka and moved to Australia for my studies.
+            Before starting my bachelor’s degree, I completed the Swinburne
+            Foundation Program and then a Diploma of Engineering, which helped
+            me build a strong base in mathematics, engineering, and design. I
+            am especially interested in structural engineering and want to build
+            a career on the structural side of civil engineering.
           </p>
         </Section>
 
@@ -265,11 +289,17 @@ export default function Portfolio() {
                 }}
                 className="rounded-[2rem] border border-neutral-800 p-7 shadow-sm text-left hover:border-neutral-600"
               >
-                <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Qualification</div>
-                <h3 className="mt-4 text-2xl font-semibold leading-snug">{entry.title}</h3>
+                <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                  Qualification
+                </div>
+                <h3 className="mt-4 text-2xl font-semibold leading-snug">
+                  {entry.title}
+                </h3>
                 <p className="mt-2 text-sm text-neutral-400">{entry.place}</p>
                 <p className="mt-1 text-sm text-neutral-500">{entry.detail}</p>
-                <p className="mt-6 text-sm font-medium">Click to explore subjects →</p>
+                <p className="mt-6 text-sm font-medium">
+                  Click to explore subjects →
+                </p>
               </button>
             ))}
           </div>
@@ -287,7 +317,9 @@ export default function Portfolio() {
                 ← Back
               </button>
 
-              <h2 className="text-3xl font-semibold">{education[openEdu].title}</h2>
+              <h2 className="text-3xl font-semibold">
+                {education[openEdu].title}
+              </h2>
 
               <div className="mt-8 grid gap-5 md:grid-cols-2">
                 {education[openEdu].items.map((sub, subIndex) => (
@@ -300,8 +332,12 @@ export default function Portfolio() {
                     className="rounded-[1.5rem] border border-neutral-800 bg-neutral-950 p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-neutral-600 hover:shadow-[0_0_18px_rgba(255,255,255,0.12)]"
                   >
                     <h3 className="text-xl font-semibold">{sub.name}</h3>
-                    <p className="text-neutral-300 mt-3 leading-7">{sub.desc}</p>
-                    <p className="mt-5 text-sm font-medium text-neutral-100">Open subject →</p>
+                    <p className="text-neutral-300 mt-3 leading-7">
+                      {sub.desc}
+                    </p>
+                    <p className="mt-5 text-sm font-medium text-neutral-100">
+                      Open subject →
+                    </p>
                   </button>
                 ))}
               </div>
@@ -309,18 +345,21 @@ export default function Portfolio() {
               {openSubject !== null && !showTopoPage && (
                 <div
                   ref={subjectDetailRef}
-                  className="mt-8 rounded-[1.75rem] border border-neutral-800 bg-neutral-950 p-8"
+                  className="mt-8 rounded-[1.75rem] border border-neutral-800 bg-neutral-950 p-8 opacity-0 translate-y-6 animate-[fadeUp_0.6s_ease-out_forwards]"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Subject Detail</div>
+                      <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                        Subject Detail
+                      </div>
                       <h3 className="mt-3 text-2xl font-semibold">
                         {education[openEdu].items[openSubject].name}
                       </h3>
                     </div>
 
                     <div className="flex items-center gap-4">
-                      {education[openEdu].items[openSubject].name === "Topographical Engineering" && (
+                      {education[openEdu].items[openSubject].name ===
+                        "Topographical Engineering" && (
                         <button
                           onClick={() => setShowTopoPage(true)}
                           className="rounded-full border border-neutral-700 px-4 py-2 text-sm transition hover:border-neutral-500 hover:bg-neutral-900"
@@ -344,7 +383,8 @@ export default function Portfolio() {
                   <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
                     <div>
                       <p className="text-neutral-300 leading-8">
-                        {education[openEdu].items[openSubject].more || "No additional details provided."}
+                        {education[openEdu].items[openSubject].more ||
+                          "No additional details provided."}
                       </p>
                     </div>
 
@@ -363,10 +403,11 @@ export default function Portfolio() {
 
               {openSubject !== null &&
                 showTopoPage &&
-                education[openEdu].items[openSubject].name === "Topographical Engineering" && (
+                education[openEdu].items[openSubject].name ===
+                  "Topographical Engineering" && (
                   <div
                     ref={subjectDetailRef}
-                    className="mt-8 rounded-[1.75rem] border border-neutral-800 bg-neutral-950 p-8"
+                    className="mt-8 rounded-[1.75rem] border border-neutral-800 bg-neutral-950 p-8 opacity-0 translate-y-6 animate-[fadeUp_0.6s_ease-out_forwards]"
                   >
                     <button
                       onClick={() => setShowTopoPage(false)}
@@ -379,9 +420,12 @@ export default function Portfolio() {
                       <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                         Topographical Engineering
                       </div>
-                      <h3 className="mt-3 text-3xl font-semibold">Detailed Work</h3>
+                      <h3 className="mt-3 text-3xl font-semibold">
+                        Detailed Work
+                      </h3>
                       <p className="mt-4 max-w-3xl text-neutral-300 leading-8">
-                        This page is for the detailed work completed in Topographical Engineering.
+                        This page is for the detailed work completed in
+                        Topographical Engineering.
                       </p>
                     </div>
 
@@ -393,33 +437,41 @@ export default function Portfolio() {
                           className="w-full h-[320px] object-cover rounded-xl"
                         />
                         <p className="mt-3 text-xs text-neutral-500">
-                          Practical levelling work completed during Topographical Engineering class.
+                          Practical levelling work completed during
+                          Topographical Engineering class.
                         </p>
 
                         <p className="mt-5 text-neutral-300 leading-8 text-sm">
-                          During the practical sessions for Topographical Engineering, we carried out
-                          levelling exercises using an automatic level and staff. In week 1 we
-                          performed the two peg test to check the accuracy of the instrument. On our
-                          first attempt, the accuracy was not up to the required standard, so we
-                          repeated the test. We then completed it a second and third time, and our
+                          During the practical sessions for Topographical
+                          Engineering, we carried out levelling exercises using
+                          an automatic level and staff. In week 1 we performed
+                          the two peg test to check the accuracy of the
+                          instrument. On our first attempt, the accuracy was not
+                          up to the required standard, so we repeated the test.
+                          We then completed it a second and third time, and our
                           accuracy improved clearly with each attempt.
                         </p>
 
                         <p className="mt-4 text-neutral-300 leading-8 text-sm">
-                          In week 2, we again worked on the two peg test and the improvement in
-                          accuracy was visible. We also completed a project where we had to measure
-                          the elevation difference from point A to point B, and then measure it again
-                          from point B back to point A in order to calculate the error. After
-                          subtracting the sum of all BS readings from the sum of all FS readings, we
-                          obtained 0.015, which was within the required standard of less than 0.020.
+                          In week 2, we again worked on the two peg test and the
+                          improvement in accuracy was visible. We also completed
+                          a project where we had to measure the elevation
+                          difference from point A to point B, and then measure
+                          it again from point B back to point A in order to
+                          calculate the error. After subtracting the sum of all
+                          BS readings from the sum of all FS readings, we
+                          obtained 0.015, which was within the required standard
+                          of less than 0.020.
                         </p>
 
                         <p className="mt-4 text-neutral-300 leading-8 text-sm">
-                          I did make some errors during the process, but luckily we double checked
-                          each reading before writing it down. Some of the mistakes included reading
-                          from the wrong crosshair and counting up the staff incorrectly. Even so,
-                          this practical work helped me understand how important precision,
-                          observation, and checking measurements are in surveying.
+                          I did make some errors during the process, but luckily
+                          we double checked each reading before writing it down.
+                          Some of the mistakes included reading from the wrong
+                          crosshair and counting up the staff incorrectly. Even
+                          so, this practical work helped me understand how
+                          important precision, observation, and checking
+                          measurements are in surveying.
                         </p>
                       </div>
 
@@ -440,7 +492,9 @@ export default function Portfolio() {
         <Section id="engineering" title="Engineering">
           <div className="grid gap-6 lg:grid-cols-2">
             <article className="rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
-              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Current Studies</div>
+              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Current Studies
+              </div>
               <h3 className="mt-4 text-2xl font-semibold">Year 2, Semester 1</h3>
               <ul className="mt-6 space-y-3 text-base leading-8 text-neutral-300">
                 <li>• Structural Mechanics</li>
@@ -451,12 +505,17 @@ export default function Portfolio() {
             </article>
 
             <article className="rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
-              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Design Interest</div>
-              <h3 className="mt-4 text-2xl font-semibold">Structural Direction</h3>
+              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Design Interest
+              </div>
+              <h3 className="mt-4 text-2xl font-semibold">
+                Structural Direction
+              </h3>
               <p className="mt-6 text-base leading-8 text-neutral-300">
-                My main interest in civil engineering is the structural side. I am interested in how
-                structures behave under forces and loads and how engineering design ensures safety
-                and stability in real structures.
+                My main interest in civil engineering is the structural side. I
+                am interested in how structures behave under forces and loads
+                and how engineering design ensures safety and stability in real
+                structures.
               </p>
             </article>
           </div>
@@ -465,8 +524,12 @@ export default function Portfolio() {
         <Section id="leadership" title="Leadership">
           <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
             <article className="rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 shadow-sm">
-              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Sport & Responsibility</div>
-              <h3 className="mt-4 text-2xl font-semibold">D. S. Senanayake College</h3>
+              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Sport & Responsibility
+              </div>
+              <h3 className="mt-4 text-2xl font-semibold">
+                D. S. Senanayake College
+              </h3>
               <div className="mt-6 space-y-3 text-base text-neutral-300">
                 <p>Vice Captain · 2022 – 2023</p>
                 <p>Captain · 2023 – 2024</p>
@@ -476,18 +539,39 @@ export default function Portfolio() {
             </article>
 
             <article className="rounded-[2rem] border border-neutral-800 bg-neutral-950 p-8 shadow-sm">
-              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Gallery</div>
-              <h3 className="mt-4 text-2xl font-semibold">Rowing & Kayaking</h3>
+              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Gallery
+              </div>
+              <h3 className="mt-4 text-2xl font-semibold">
+                Rowing & Kayaking
+              </h3>
 
               <div className="mt-8 grid gap-4 md:grid-cols-2">
-                <img src={rowingCrewImg} alt="Rowing crew boat" className="rounded-xl object-cover w-full h-48" />
-                <img src={rowingScullImg} alt="Single rowing scull" className="rounded-xl object-cover w-full h-48" />
-                <img src={kayakingActionImg} alt="Kayaking action" className="rounded-xl object-cover w-full h-48" />
-                <img src={kayakPaddleImg} alt="Kayak paddle close up" className="rounded-xl object-cover w-full h-48" />
+                <img
+                  src={rowingCrewImg}
+                  alt="Rowing crew boat"
+                  className="rounded-xl object-cover w-full h-48"
+                />
+                <img
+                  src={rowingScullImg}
+                  alt="Single rowing scull"
+                  className="rounded-xl object-cover w-full h-48"
+                />
+                <img
+                  src={kayakingActionImg}
+                  alt="Kayaking action"
+                  className="rounded-xl object-cover w-full h-48"
+                />
+                <img
+                  src={kayakPaddleImg}
+                  alt="Kayak paddle close up"
+                  className="rounded-xl object-cover w-full h-48"
+                />
               </div>
 
               <p className="mt-6 text-sm text-neutral-400">
-                Representative images of rowing and kayaking to illustrate the sport and leadership experience.
+                Representative images of rowing and kayaking to illustrate the
+                sport and leadership experience.
               </p>
             </article>
           </div>
@@ -496,8 +580,12 @@ export default function Portfolio() {
         <Section id="skills" title="Skills">
           <div className="grid gap-6 md:grid-cols-2">
             <article className="rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
-              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Technical</div>
-              <h3 className="mt-4 text-2xl font-semibold">Engineering Skills</h3>
+              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Technical
+              </div>
+              <h3 className="mt-4 text-2xl font-semibold">
+                Engineering Skills
+              </h3>
               <ul className="mt-6 space-y-3 text-base leading-8 text-neutral-300">
                 {skills.engineering.map((skill) => (
                   <li key={skill}>• {skill}</li>
@@ -506,7 +594,9 @@ export default function Portfolio() {
             </article>
 
             <article className="rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
-              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Professional</div>
+              <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Professional
+              </div>
               <h3 className="mt-4 text-2xl font-semibold">Core Strengths</h3>
               <ul className="mt-6 space-y-3 text-base leading-8 text-neutral-300">
                 {skills.professional.map((skill) => (
@@ -519,9 +609,15 @@ export default function Portfolio() {
 
         <Section id="contact" title="Contact">
           <div className="rounded-[2rem] border border-neutral-800 p-8 shadow-sm">
-            <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">Contact</div>
-            <h3 className="mt-4 text-2xl font-semibold">Professional Enquiries</h3>
-            <p className="mt-6 text-base leading-8 text-neutral-300">jinethmudalige27@gmail.com</p>
+            <div className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+              Contact
+            </div>
+            <h3 className="mt-4 text-2xl font-semibold">
+              Professional Enquiries
+            </h3>
+            <p className="mt-6 text-base leading-8 text-neutral-300">
+              jinethmudalige27@gmail.com
+            </p>
           </div>
         </Section>
       </main>
@@ -535,7 +631,9 @@ function Section({ id, title, children }) {
       id={id}
       className="scroll-mt-24 rounded-[2rem] border border-neutral-800 bg-neutral-900 p-8 md:p-10 transition-opacity duration-500"
     >
-      <div className="text-xs uppercase tracking-[0.35em] text-neutral-500">{title}</div>
+      <div className="text-xs uppercase tracking-[0.35em] text-neutral-500">
+        {title}
+      </div>
       <div className="mt-6">{children}</div>
     </section>
   );
